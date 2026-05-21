@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS Security Update</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      background: #111;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #bbb;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .progress {
+      width: 100%;
+      height: 10px;
+      background: #222;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background: #0A84FF;
+      animation: load 6s linear forwards;
+    }
+
+    @keyframes load {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    .logs {
+      text-align: left;
+      font-size: 14px;
+      color: #8e8e93;
+      min-height: 90px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #0A84FF;
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .popup-box {
+      background: #1c1c1e;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      animation: pop 0.25s ease;
+    }
+
+    .popup-box h2 {
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    .popup-box p {
+      margin-bottom: 25px;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>iOS Security Update</h1>
+
+    <p>
+      Preparing Security Verification...
+    </p>
+
+    <div class="progress">
+      <div class="bar"></div>
+    </div>
+
+    <div class="logs" id="logs"></div>
+
+    <button onclick="showPopup()">
+      Continue
+    </button>
+  </div>
+
+  <div id="popup">
+    <div class="popup-box">
+      <h2>Security Verification Required</h2>
+
+      <p>
+        An unexpected issue was detected while verifying this iPhone.
+      </p>
+
+      <button onclick="closePopup()">
+        Verify Device
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const logs = [
+      "Checking Face ID configuration...",
+      "Verifying iCloud sync...",
+      "Scanning secure applications...",
+      "Optimizing iOS performance...",
+      "Finalizing security validation..."
+    ];
+
+    let index = 0;
+
+    function addLog() {
+      if(index >= logs.length) return;
+
+      const logBox = document.getElementById('logs');
+
+      const line = document.createElement('div');
+      line.textContent = logs[index];
+
+      logBox.appendChild(line);
+
+      index++;
+    }
+
+    setInterval(addLog, 1000);
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+
+      setTimeout(() => {
+        alert('Con Cặt');
+      }, 1500);
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
